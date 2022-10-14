@@ -1,0 +1,172 @@
+Microsoft Windows [Version 10.0.22000.318]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ameya>mongo
+MongoDB shell version v5.0.2
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3ca1d05a-c961-4eaf-a7e0-4c8fcb117c83") }
+MongoDB server version: 5.0.2
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2021-11-13T09:08:32.414+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs;
+Bank        0.000GB
+BloodBank   0.000GB
+Blood_Bank  0.000GB
+Company5    0.000GB
+Company7    0.000GB
+IndexDemo   0.000GB
+Library     0.000GB
+Student     0.000GB
+Youtube     0.000GB
+admin       0.000GB
+company     0.000GB
+config      0.000GB
+local       0.000GB
+pvg         0.000GB
+pvg1        0.000GB
+> use Blood_Bank;
+switched to db Blood_Bank
+> show collections;
+Add_Donar
+Login
+> db.Add_Donar.find().pretty();
+{
+        "_id" : ObjectId("61a9e1f7378efc49224e0edf"),
+        "Aadhar_No" : "567890345678",
+        "Name" : "Pranav Patne",
+        "Age" : "20",
+        "Mob" : "9146691638",
+        "City" : "Latur",
+        "Gender" : "Male",
+        "Blood_Group" : "A+"
+}
+{
+        "_id" : ObjectId("61a9e241378efc49224e0ee2"),
+        "Aadhar_No" : "707896457890",
+        "Name" : "Rohan Nakod",
+        "Age" : "21",
+        "Mob" : "9767895678",
+        "City" : "Pune",
+        "Gender" : "Male",
+        "Blood_Group" : "A+"
+}
+{
+        "_id" : ObjectId("61a9e274378efc49224e0ee5"),
+        "Aadhar_No" : "756945873248",
+        "Name" : "Atharva Pawar",
+        "Age" : "20",
+        "Mob" : "7061070830",
+        "City" : "Nagar",
+        "Gender" : "Male",
+        "Blood_Group" : "B+"
+}
+> db.Add_Donar.update({Aadhar_No:"567890345678"},{Aadhar_No:"567890345678",Name:"Pranav Patne",Age:"22",Mob:"9156933880",City:"Nagpur",Gender:"Female",Blood_Group:"A-"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.Add_Donar.find().pretty();
+{
+        "_id" : ObjectId("61a9e1f7378efc49224e0edf"),
+        "Aadhar_No" : "567890345678",
+        "Name" : "Pranav Patne",
+        "Age" : "22",
+        "Mob" : "9156933880",
+        "City" : "Nagpur",
+        "Gender" : "Female",
+        "Blood_Group" : "A-"
+}
+{
+        "_id" : ObjectId("61a9e241378efc49224e0ee2"),
+        "Aadhar_No" : "707896457890",
+        "Name" : "Rohan Nakod",
+        "Age" : "21",
+        "Mob" : "9767895678",
+        "City" : "Pune",
+        "Gender" : "Male",
+        "Blood_Group" : "A+"
+}
+{
+        "_id" : ObjectId("61a9e274378efc49224e0ee5"),
+        "Aadhar_No" : "756945873248",
+        "Name" : "Atharva Pawar",
+        "Age" : "20",
+        "Mob" : "7061070830",
+        "City" : "Nagar",
+        "Gender" : "Male",
+        "Blood_Group" : "B+"
+}
+> db.Add_Donar.remove({City:"Pune"});
+WriteResult({ "nRemoved" : 1 })
+> db.Add_Donar.find().pretty();
+{
+        "_id" : ObjectId("61a9e1f7378efc49224e0edf"),
+        "Aadhar_No" : "567890345678",
+        "Name" : "Pranav Patne",
+        "Age" : "22",
+        "Mob" : "9156933880",
+        "City" : "Nagpur",
+        "Gender" : "Female",
+        "Blood_Group" : "A-"
+}
+{
+        "_id" : ObjectId("61a9e274378efc49224e0ee5"),
+        "Aadhar_No" : "756945873248",
+        "Name" : "Atharva Pawar",
+        "Age" : "20",
+        "Mob" : "7061070830",
+        "City" : "Nagar",
+        "Gender" : "Male",
+        "Blood_Group" : "B+"
+}
+> db.Add_Donar.insert({Aadhar_No:"512345678567",Name:"Rohan Nakod",Age:"21",Mob:"9156345678",City:"Parbhani",Gender:"Male",Blood_Group:"AB+"});
+WriteResult({ "nInserted" : 1 })
+> db.Add_Donar.find().pretty();
+{
+        "_id" : ObjectId("61a9e1f7378efc49224e0edf"),
+        "Aadhar_No" : "567890345678",
+        "Name" : "Pranav Patne",
+        "Age" : "22",
+        "Mob" : "9156933880",
+        "City" : "Nagpur",
+        "Gender" : "Female",
+        "Blood_Group" : "A-"
+}
+{
+        "_id" : ObjectId("61a9e274378efc49224e0ee5"),
+        "Aadhar_No" : "756945873248",
+        "Name" : "Atharva Pawar",
+        "Age" : "20",
+        "Mob" : "7061070830",
+        "City" : "Nagar",
+        "Gender" : "Male",
+        "Blood_Group" : "B+"
+}
+{
+        "_id" : ObjectId("61a9e4e2c5c9c2b047a00f67"),
+        "Aadhar_No" : "512345678567",
+        "Name" : "Rohan Nakod",
+        "Age" : "21",
+        "Mob" : "9156345678",
+        "City" : "Parbhani",
+        "Gender" : "Male",
+        "Blood_Group" : "AB+"
+}
